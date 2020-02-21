@@ -12,10 +12,11 @@ spring.rabbitmq.password=guest
 spring.rabbitmq.virtual-host=/
 spring.rabbitmq.connection-timeout=15000
 
-#确认接收消息ack
+#开启confirms确认机制
 spring.rabbitmq.publisher-confirms=true
+开启returns确认机制
 spring.rabbitmq.publisher-returns=true
-#mandatory为true的时候才能接收到返回的消息
+#设置为true后 消费者在消息没有被路由到合适队列情况下会被return监听，而不会自动删除
 spring.rabbitmq.template.mandatory=true
 #这配置是否是确认配置
 #spring.rabbitmq.publisher-confirm-type=
