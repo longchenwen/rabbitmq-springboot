@@ -32,3 +32,20 @@ spring.rabbitmq.template.mandatory=true
     3.1 消费端监听@RabbitMQListener注解,这个对于在实际工作中非常好用
     
     3.2 @RabbitMQListener是一个组合注解,里面可以配置注解,@QueueBinding,@Queue,@Exchange直接通过这个组合注解一次性搞定消费端交换机,队列,绑定,路由,并且配置监听功能等
+  
+ ```
+ #签收模式:手工签收
+spring.rabbitmq.listener.simple.acknowledge-mode=manual
+#消费端的监听个数
+spring.rabbitmq.listener.simple.concurrency=5
+#消费端的监听-最大-个数
+spring.rabbitmq.listener.simple.max-concurrency=10
+
+spring.rabbitmq.listener.order.queue.name=queue-2
+spring.rabbitmq.listener.order.queue.durable=true
+spring.rabbitmq.listener.order.exchange.name=exchange-2
+spring.rabbitmq.listener.order.exchange.durable=true
+spring.rabbitmq.listener.order.exchange.type=topic
+spring.rabbitmq.listener.order.exchange.ignoreDeclarationExceptions=true
+spring.rabbitmq.listener.order.key=springboot.*
+ ```
