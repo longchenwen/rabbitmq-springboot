@@ -19,5 +19,16 @@ spring.rabbitmq.publisher-returns=true
 spring.rabbitmq.template.mandatory=true
 #这配置是否是确认配置
 #spring.rabbitmq.publisher-confirm-type=
-```
 
+```
+## 2.springboot整合-消费端-配置详解
+
+1.首先配置手工确认模式,用于ACK的手工处理,这样我们可以保证消息的可靠性送达,或者再消费端消费失败的时候可以做到重回队列,喝酒业务记录日志等处理
+
+2.可以设置消费端的监听个数和最大个数,用于控制消费端的并发情况
+
+3.@RabbitListener注解使用
+   
+    3.1 消费端监听@RabbitMQListener注解,这个对于在实际工作中非常好用
+    
+    3.2 @RabbitMQListener是一个组合注解,里面可以配置注解,@QueueBinding,@Queue,@Exchange直接通过这个组合注解一次性搞定消费端交换机,队列,绑定,路由,并且配置监听功能等
